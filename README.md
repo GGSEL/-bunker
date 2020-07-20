@@ -1,4 +1,4 @@
 # -bunker
 Role Play game "Bunker"
 
-Owners - GGSEL, Morfus3
+Owners - GGSEL, Morfus31
