@@ -3,6 +3,7 @@ from discord import Embed
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
+from discord import reaction, user
 import asyncio
 import character
 
@@ -13,6 +14,7 @@ bot = commands.Bot(command_prefix='!')
 #     'news': iD,
 # }
 
+game = False
 
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -22,16 +24,30 @@ async def clear(ctx, amount=100):
 
 @bot.event
 async def on_message(message):
-    await bot.process_commands( message )
-
-    if message.content.startswith('**Игра начинается!**'):
+    await bot.process_commands(message)
+    if message.content.startswith('**Игра начинается!**') and message.author.id == 734796897159741540:
         await message.add_reaction('☄️')
 
 
 @bot.command(pass_context=True)
 async def play(message):
+    await message.channel.purge(limit=1)
 
+    global game
     await message.channel.send('**Игра начинается!**')
+    game = True
+
+@bot.event
+async def on_raw_reaction_add(payload):
+    if game == True:
+        print('success')
+        member = payload.member
+        embed = discord.Embed(title='Тебе выдана роль!',
+                          colour=discord.Color.green())
+        embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        embed.set_footer(text=character.create_Character(1))
+
+        await member.send(embed=embed)
 
 
 @bot.command(pass_context=True)

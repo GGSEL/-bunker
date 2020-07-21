@@ -40,7 +40,7 @@ class Сharacter:
         'Храбрый',
         'Эгоистический'])
         self.gender = random.choice(['Мужчина', 'Женщина'])
-        self.phobias = random.choice(['Авиафобия',
+        self.phobias = random.choice(['Нету фобий',
         	'Айлурофобия',
         	'Акустикофобия ',
         	'Баллистофобия ',
