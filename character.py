@@ -103,7 +103,8 @@ class Сharacter:
 Пол: {self.gender},
 Профессия: {self.profession},
 Характеристика: {self.characteristic},
-Фобия: {self.phobia}'''
+Фобия: {self.phobia},
+Инвентарь: {self.inventory}'''
 
 
 def create_Character(quontity):
