@@ -143,18 +143,10 @@ class Сharacter:
             'Слепота',
             'ПМА']
 
-<<<<<<< HEAD
         if disease == 1:
             self.disease = 'Абсолютно здоров'
         else:
             self.disease = random.choice(health)
-=======
-            if disease == 1:
-            self.disease = 'Абсолютно здоров'
-        else:
-            self.disease = random.choice(health)
-
->>>>>>> dc0fdb06afa9174407b0e317f9e88a7765eb9ed9
 
 
     def showrole(self):
