@@ -72,6 +72,10 @@ async def play(message):
 
     await message.send(embed=embed)
 
+    time.sleep(3)
+
+
+    await message.channel.purge(limit=4)
     time.sleep(2)
 
 
@@ -79,18 +83,9 @@ async def play(message):
                         colour=discord.Color.green())
     embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
     embed.set_footer(text=c.get('description'))
-
-
     await message.send(embed=embed)
-    
-    time.sleep(2)
 
-    embed = discord.Embed(title=c.get('title'),
-                        colour=discord.Color.green())
-    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
-    embed.set_footer(text=c.get('description'))
-
-    await message.send(embed=embed)
+    game = False
 
 
 
@@ -104,7 +99,6 @@ async def on_raw_reaction_add(payload):
                           colour=discord.Color.green())
         embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
         embed.set_footer(text=character.create_Character(1))
-
         await member.send(embed=embed)
 
 
