@@ -4,17 +4,15 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
 from discord import reaction, user
+import time
 import asyncio
 import character
 
 
 bot = commands.Bot(command_prefix='!')
 
-# channels.id = {
-#     'news': iD,
-# }
-
 game = False
+
 
 @bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -38,9 +36,11 @@ async def play(message):
     await message.channel.send('**Игра начинается!**')
     game = True
 
+
+
 @bot.event
 async def on_raw_reaction_add(payload):
-    if payload.emoji.id == '735442759057539092':
+    if payload.emoji.name == 'cometa_746623' and game == True:
         print('success')
         member = payload.member
         embed = discord.Embed(title='Тебе выдана роль!',
@@ -49,6 +49,30 @@ async def on_raw_reaction_add(payload):
         embed.set_footer(text=character.create_Character(1))
 
         await member.send(embed=embed)
+
+        time.sleep(30)
+
+        embed = discord.Embed(title='Поспеши!',
+                            colour=discord.Color.green())
+        embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        embed.set_footer(text='Осталось 29 секунд до начала игры...')
+
+        await member.send(embed=embed)
+
+        time.sleep(30)
+
+        embed = discord.Embed(title='Игра начинается!',
+                            colour=discord.Color.green())
+        embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+        embed.set_footer(text='Не успел? Ничего! В следующий раз точно успеешь')
+
+
+        await member.send(embed=embed)
+
+
+
+
+        game = False
 
 
 # @bot.command(pass_context=True)
