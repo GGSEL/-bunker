@@ -8,6 +8,8 @@ import time
 import asyncio
 import character
 import game
+import catastrophes
+from catastrophes import *
 
 
 bot = commands.Bot(command_prefix='!')
@@ -39,6 +41,8 @@ async def play(message):
     await message.channel.send('**Игра начинается!**')
     game = True
 
+    c = catastrophes.text()
+
     time.sleep(1)
 
     embed = discord.Embed(title='Поспеши!',
@@ -65,6 +69,26 @@ async def play(message):
     embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
     embed.set_footer(text='Не успел? Ничего! В следующий раз точно успеешь')
 
+
+    await message.send(embed=embed)
+
+    time.sleep(2)
+
+
+    embed = discord.Embed(title=c.get('title'),
+                        colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text=c.get('description'))
+
+
+    await message.send(embed=embed)
+    
+    time.sleep(2)
+
+    embed = discord.Embed(title=c.get('title'),
+                        colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text=c.get('description'))
 
     await message.send(embed=embed)
 
