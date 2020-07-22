@@ -7,6 +7,7 @@ from discord import reaction, user
 import time
 import asyncio
 import character
+import game
 
 
 bot = commands.Bot(command_prefix='!')
@@ -21,11 +22,13 @@ async def clear(ctx, amount=100):
 
 
 @bot.event
-async def on_message(message):
-    await bot.process_commands(message)
+async def on_message(ctx):
+    await bot.process_commands(ctx)
 
-    if message.content.startswith('**Игра начинается!**') and message.author.id == 734796897159741540:
-        await message.add_reaction('cometa_746623:735442759057539092')
+    if ctx.content.startswith('**Игра начинается!**') and ctx.author.id == 734796897159741540:
+        await ctx.add_reaction('cometa_746623:735442759057539092')
+
+        
 
 
 @bot.command(pass_context=True)
@@ -36,12 +39,42 @@ async def play(message):
     await message.channel.send('**Игра начинается!**')
     game = True
 
+    time.sleep(1)
+
+    embed = discord.Embed(title='Поспеши!',
+                                    colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text='Осталось 59 секунд до начала игры...')
+
+    await message.send(embed=embed)
+
+
+    time.sleep(30)
+
+    embed = discord.Embed(title='Поспеши!',
+                                    colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text='Осталось 29 секунд до начала игры...')
+
+    await message.send(embed=embed)
+
+    time.sleep(30)
+
+    embed = discord.Embed(title='Игра начинается!',
+                        colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text='Не успел? Ничего! В следующий раз точно успеешь')
+
+
+    await message.send(embed=embed)
+
 
 
 @bot.event
 async def on_raw_reaction_add(payload):
+    global game
+
     if payload.emoji.name == 'cometa_746623' and game == True:
-        print('success')
         member = payload.member
         embed = discord.Embed(title='Тебе выдана роль!',
                           colour=discord.Color.green())
@@ -49,30 +82,6 @@ async def on_raw_reaction_add(payload):
         embed.set_footer(text=character.create_Character(1))
 
         await member.send(embed=embed)
-
-        time.sleep(30)
-
-        embed = discord.Embed(title='Поспеши!',
-                            colour=discord.Color.green())
-        embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
-        embed.set_footer(text='Осталось 29 секунд до начала игры...')
-
-        await member.send(embed=embed)
-
-        time.sleep(30)
-
-        embed = discord.Embed(title='Игра начинается!',
-                            colour=discord.Color.green())
-        embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
-        embed.set_footer(text='Не успел? Ничего! В следующий раз точно успеешь')
-
-
-        await member.send(embed=embed)
-
-
-
-
-        game = False
 
 
 # @bot.command(pass_context=True)

@@ -75,7 +75,9 @@ class Сharacter:
             self.phobia = 'Нет фобий'
         else:
             self.phobia = random.choice(phobias)
-    
+
+            
+                
         self.inventory = random.choice(['Семена пшеницы',
         'Переносная електростанция',
         'Переносная гидроелектростанция',
@@ -97,6 +99,33 @@ class Сharacter:
         'Консервы',
         'Огнетушитель'])
 
+        disease = random.randint(1,2)
+        health=['Алкоголизм',
+            'СПИД',
+            'Геморрой',
+            'Деменция',
+            'Наркомания',
+            'Ожирение',
+            'ОРВИ',
+            'Панкреатит',
+            'Плоскостопие',
+            'Рак',
+            'Сколиоз'
+            'Сахарный диабет',
+            'Туберкулёз',
+            'Шизофрения',
+            'Гиповитаминоз',
+            'Игровое расстройство',
+            'Гастрит',
+            'Игровое расстройство',
+            'Грип',
+            'Слепота',
+            'ПМА']
+
+        if disease == 1:
+            self.disease = 'Абсолютно здоров'
+        else:
+            self.disease = random.choice(health)
 
 
     def showrole(self):
@@ -105,7 +134,8 @@ class Сharacter:
 Профессия: {self.profession},
 Характеристика: {self.characteristic},
 Фобия: {self.phobia},
-Инвентарь: {self.inventory}'''
+Инвентарь: {self.inventory},
+Здоровье: {self.disease}'''
 
 
 def create_Character(quontity):
