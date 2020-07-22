@@ -148,6 +148,28 @@ class Сharacter:
         else:
             self.disease = random.choice(health)
 
+            self.hobby = random.choice(['Вязание',
+                'Фитнес',
+                'Пианино',
+                'Гитара',
+                'Геймер',
+                'Спасать людей',
+                'Калиграфия',
+                'Охота на приведений',
+                'Трейнсерфинг',
+                'Рыбаловство',
+                'Охота',
+                'Гэокешинг',
+                'Читать книги',
+                'Волонтёрство',
+                'Ходить в туалет',
+                'Стритлюж',
+                'Смотреть фильмы сериалы',
+                'Смотреть аниме',
+                'Колекционирование кукол Барби',
+                'Дресировка голубей'])
+
+
 
     def showrole(self):
         return f'''Возраст: {self.age},
@@ -156,7 +178,8 @@ class Сharacter:
 Характеристика: {self.characteristic},
 Фобия: {self.phobia},
 Инвентарь: {self.inventory},
-Здоровье: {self.disease}'''
+Здоровье: {self.disease},
+Хобби: {self.hobby}'''
 
 
 def create_Character(quontity):
