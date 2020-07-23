@@ -10,6 +10,7 @@ import character
 import game
 import catastrophes
 from catastrophes import *
+import os
 
 
 bot = commands.Bot(command_prefix='!')
@@ -126,4 +127,4 @@ async def on_raw_reaction_add(payload):
 
 
 token = os.environ.get('BOT_TOKEN')
-client.run(str(token))
+bot.run(str(token))
