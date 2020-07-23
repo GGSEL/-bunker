@@ -22,6 +22,15 @@ game = False
 async def clear(ctx, amount=100):
     await ctx.channel.purge(limit=amount)
 
+@bot.event
+async def on_ready(ctx):
+    embed = discord.Embed(title='Спасибо, что пригласил меня!',
+                                    colour=discord.Color.green())
+    embed.set_author(name=bot.user.name, icon_url=bot.user.avatar_url)
+    embed.set_footer(text='Чтоб начать игру, напиши !play и жди роль!')
+
+    await ctx.send(embed=embed)
+
 
 @bot.event
 async def on_message(ctx):
