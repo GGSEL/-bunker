@@ -116,4 +116,5 @@ async def on_raw_reaction_add(payload):
 #         await ctx.send(embed=embed)
 
 
-bot.run('NzM0Nzk2ODk3MTU5NzQxNTQw.XxXLVA.DkIcRM7W5LGfLZrp6dTBrhDUoE4')
+token = os.environ.get('BOT_TOKEN')
+client.run(str(token))
