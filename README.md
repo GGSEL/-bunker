@@ -9,4 +9,4 @@ Before using Bot, you need to create emoji with name "cometa_746623" and then ou
 How to play?
 Send !play
 
-Owners - GGSEL, Morfus31
+Owners - GGSEL, Morfus
