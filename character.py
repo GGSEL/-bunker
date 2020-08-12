@@ -170,6 +170,12 @@ class Сharacter:
             'Дресировка голубей'])
 
 
+                self.additional = random.choice(['Резидент комеди клаб',
+                	'Ограбил банк',
+                	'Тайный поклонник Марлин Монро',
+                	'Альфасамец',
+                	'Тайный агент',
+                	''])
 
     def showrole(self):
         return f'''Возраст: {self.age},
@@ -179,7 +185,8 @@ class Сharacter:
 Фобия: {self.phobia},
 Инвентарь: {self.inventory},
 Здоровье: {self.disease},
-Хобби: {self.hobby}'''
+Хобби: {self.hobby},
+Доп.Информация{self.additional}'''
 
 
 def create_Character(quontity):
